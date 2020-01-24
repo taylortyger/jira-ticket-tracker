@@ -2,9 +2,10 @@ const request = require('request');
 const fs = require('fs');
 const auth = require('./keys');
 
+let boardId = 341;
 const options = {
    method: 'GET',
-   url: 'https://ifitdev.atlassian.net/rest/agile/1.0/board/341/issue?maxResults=1000',
+   url: `https://ifitdev.atlassian.net/rest/agile/1.0/board/${boardId}/issue?maxResults=1000`,
    auth: { username: auth.USER, password: auth.AUTH_KEY },
    headers: {
       'Accept': 'application/json'
