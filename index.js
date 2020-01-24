@@ -8,7 +8,7 @@ let statusName = 'Tier 3';
 const options = {
    method: 'GET',
    url: `https://ifitdev.atlassian.net/rest/agile/1.0/board/${boardId}/issue?maxResults=1000`,
-   auth: { username: auth.USER, password: auth.AUTH_KEY },
+   auth: { username: auth.USER, password: auth.TOKEN },
    headers: {
       'Accept': 'application/json'
    }
