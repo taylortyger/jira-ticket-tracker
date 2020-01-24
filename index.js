@@ -3,6 +3,8 @@ const fs = require('fs');
 const auth = require('./keys');
 
 let boardId = 341;
+let statusName = 'Tier 3';
+
 const options = {
    method: 'GET',
    url: `https://ifitdev.atlassian.net/rest/agile/1.0/board/${boardId}/issue?maxResults=1000`,
@@ -16,13 +18,12 @@ request(options, function (error, response, body) {
    if (error) throw new Error(error);
    let result = JSON.parse(body);
    let done = false;
-   let tickets = getTickets(result['issues'], 'Tier 3');
+   let tickets = getTickets(result['issues'], statusName);
    createCSV(tickets);
 });
 
 function getTickets(issues, status) {
    let tickets = [];
-   let done = false;
    issues.forEach(issue => {
       if(issue['fields']['status']['name'] === status) {
          tickets.push({
