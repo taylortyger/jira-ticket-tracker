@@ -17,7 +17,6 @@ const options = {
 request(options, function (error, response, body) {
    if (error) throw new Error(error);
    let result = JSON.parse(body);
-   let done = false;
    let tickets = getTickets(result['issues'], statusName);
    createCSV(tickets);
 });
